@@ -1,0 +1,38 @@
+GET http://localhost:8080
+Accept: application/json
+
+<> 2020-09-02T033856.404.json
+
+###
+
+GET http://localhost:8080
+Accept: application/json
+
+<> 2020-09-02T032803.404.json
+
+###
+
+GET http://localHost:8080
+
+<> 2020-09-02T032725.404.json
+
+###
+
+GET http://localHost:8080
+
+<> 2020-09-02T032716.404.json
+
+###
+
+POST http://localhost:8080/addItem?itemName=secondItem
+
+<> 2020-09-02T032644.500.json
+
+###
+
+POST http://localhost:8080/addItem?itemName=secondItem
+
+<> 2020-09-02T032553.500.json
+
+###
+
