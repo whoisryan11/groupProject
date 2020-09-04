@@ -35,7 +35,12 @@ public class Project {
     @JoinColumn(name = "item_id")
     private Item item;
 
-
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            mappedBy = "project",
+            cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+                    CascadeType.DETACH, CascadeType.REFRESH})
+    Set<Formula> formulas;
 
     public int getId() {
         return id;
