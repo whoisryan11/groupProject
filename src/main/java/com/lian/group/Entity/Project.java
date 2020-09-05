@@ -15,9 +15,6 @@ public class Project {
     @Column(name="project_name" )
     private String projectName;
 
-    @Column(name = "editable")
-    private boolean editable;
-
     @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "user_id")
@@ -28,12 +25,7 @@ public class Project {
             mappedBy = "project",
             cascade= {CascadeType.PERSIST, CascadeType.MERGE,
                     CascadeType.DETACH, CascadeType.REFRESH})
-    Set<ProjectReource> reources;
-
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-            CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "item_id")
-    private Item item;
+    Set<ProjectReource> resources;
 
     @OneToMany(
             fetch = FetchType.LAZY,
@@ -58,14 +50,6 @@ public class Project {
         this.projectName = projectName;
     }
 
-    public boolean isEditable() {
-        return editable;
-    }
-
-    public void setEditable(boolean editable) {
-        this.editable = editable;
-    }
-
     public User getUser() {
         return user;
     }
@@ -74,20 +58,12 @@ public class Project {
         this.user = user;
     }
 
-    public Item getItem() {
-        return item;
+    public Set<ProjectReource> getResources() {
+        return resources;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
-    public Set<ProjectReource> getReources() {
-        return reources;
-    }
-
-    public void setReources(Set<ProjectReource> reources) {
-        this.reources = reources;
+    public void setResources(Set<ProjectReource> resources) {
+        this.resources = resources;
     }
 }
 
