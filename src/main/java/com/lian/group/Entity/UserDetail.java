@@ -1,6 +1,7 @@
 package com.lian.group.Entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "user_detail")
@@ -9,8 +10,9 @@ public class UserDetail {
     @Column(name = "id")
     private Integer id;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
+    @OneToOne(mappedBy="user_detail",
+            cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+                    CascadeType.REFRESH})
     private User user;
 
     @Column(name = "role")
@@ -18,6 +20,9 @@ public class UserDetail {
 
     @Column(name = "user_image")
     private String image_url;
+
+    @Column(name = "user_role_register_date")
+    private Date userRoleRegisterDate;
 
     public UserDetail() {
 
@@ -59,5 +64,9 @@ public class UserDetail {
     public void setImage_url(String image_url) {
         this.image_url = image_url;
     }
+
+    public Date getUserRoleRegisterDate() { return userRoleRegisterDate; }
+
+    public void setUserRoleRegisterDate(Date userRoleRegisterDate) { this.userRoleRegisterDate = userRoleRegisterDate; }
 
 }
