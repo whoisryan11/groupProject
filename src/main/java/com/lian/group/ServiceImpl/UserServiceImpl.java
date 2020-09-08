@@ -41,15 +41,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User registerNewUser(String username, String password, String email) {
-        User user = new User();
-        user.setUsername(username);
-        user.setEmail(email);
-        user.setPassword(password);
-        return userRepository.save(user);
-    }
-
-    @Override
     public UserDetails loadUserByUsername(String username) {
         final Optional<User> optionalUser = userRepository.findByUsername(username);
 
