@@ -17,13 +17,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/user/uid={id}")
+    @GetMapping("getUser/uid={id}")
     public User findUserByID (@PathVariable Integer id) throws Exception {
         return userService.findOne(id);
     }
 
-    @GetMapping("/users")
-    public List<User> getProjects(){
+    @GetMapping("getUsers")
+    public List<User> getUsers(){
         return userService.findAll();
     }
 }
