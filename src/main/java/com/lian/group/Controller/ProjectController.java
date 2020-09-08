@@ -11,12 +11,7 @@ public class ProjectController {
     private ProjectRepository projectRepository;
 
     @PostMapping("/addProject")
-    public String addItem(@RequestParam String name) {
-        Project project = new Project();
-        project.setProjectName(name);
-        projectRepository.save(project);
-        return "Added new project to repo!";
-    }
+    public String addProject(@RequestParam String name) { return projectRepository.addProject(name); }
 
     @GetMapping("/project")
     public Iterable<Project> getProjects(){
@@ -27,4 +22,7 @@ public class ProjectController {
     public Project findProjectById (@PathVariable Integer id) {
         return projectRepository.findProjectById(id);
     }
+
+    @DeleteMapping("/project/{id}")
+    public String deleteProjectById(@PathVariable Integer id) { return projectRepository.deleteProjectById(id); }
 }
