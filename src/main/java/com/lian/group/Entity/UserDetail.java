@@ -9,12 +9,12 @@ public class UserDetail {
     @Id
     @Column(name = "id")
     private Integer id;
-
+/**
     @OneToOne(mappedBy="userDetail",
             cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
                     CascadeType.REFRESH})
     private User user;
-
+*/
     @Column(name = "role")
     private String role;
 
@@ -30,7 +30,7 @@ public class UserDetail {
 
     public UserDetail(User user){
         this.id = user.getId();
-        this.user = user;
+        //this.user = user;
     }
 
     public Integer getId() {
@@ -40,7 +40,7 @@ public class UserDetail {
     public void setId(Integer id) {
         this.id = id;
     }
-
+/**
     public User getUser() {
         return user;
     }
@@ -48,7 +48,7 @@ public class UserDetail {
     public void setUser(User user) {
         this.user = user;
     }
-
+*/
     public String getRole() {
         return role;
     }

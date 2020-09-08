@@ -7,6 +7,8 @@ import com.lian.group.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -21,8 +23,15 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new Exception("No User Found!!!");
         }
+        if(user.getUserDetail() != null){
+            user.setUserDetail(null);
+        }
         return user;
     }
 
-
+    @Override
+    public List<User> findAll() {
+        List<User> users = userRepository.findAll();
+        return users;
+    }
 }
