@@ -10,7 +10,7 @@ public class UserDetail {
     @Column(name = "id")
     private Integer id;
 
-    @OneToOne(mappedBy="user_detail",
+    @OneToOne(mappedBy="userDetail",
             cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
                     CascadeType.REFRESH})
     private User user;
