@@ -25,7 +25,7 @@ public class Project {
             mappedBy = "project",
             cascade= {CascadeType.PERSIST, CascadeType.MERGE,
                     CascadeType.DETACH, CascadeType.REFRESH})
-    Set<ProjectReource> resources;
+    Set<ProjectResource> resources;
 
     @OneToMany(
             fetch = FetchType.LAZY,
@@ -58,11 +58,11 @@ public class Project {
         this.user = user;
     }
 
-    public Set<ProjectReource> getResources() {
+    public Set<ProjectResource> getResources() {
         return resources;
     }
 
-    public void setResources(Set<ProjectReource> resources) {
+    public void setResources(Set<ProjectResource> resources) {
         this.resources = resources;
     }
 }
