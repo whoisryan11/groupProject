@@ -14,4 +14,10 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer> {
     Resource findResourceById(Integer id);
 
     List<Resource> findAll();
+    // delete by id
+    void deleteById(Integer id);
+
+    // trying to delete as we like
+//    @Override
+//    void deleteInBatch(Iterable<Resource> iterable);
 }

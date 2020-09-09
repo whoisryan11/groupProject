@@ -29,4 +29,13 @@ public class ResourceController {
     public List<Resource> getResources(){
         return resourceService.findAll();
     }
+
+    // delete should use @GetMapping, Because the method use Http GET
+    // @DeleteMapping Doesn't work???
+//    @DeleteMapping("/deleteResource/{id}")
+    @GetMapping("/deleteResource/{id}")
+    public String  deleteResourceByID(@PathVariable Integer id) throws Exception{
+         resourceService.deleteOne(id);
+         return "Delete Successfully";
+    }
 }

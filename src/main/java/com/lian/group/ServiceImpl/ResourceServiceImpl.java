@@ -13,6 +13,7 @@ public class ResourceServiceImpl implements ResourceService {
     @Autowired
     private ResourceRepository resourceRepository;
 
+    // search by id
     @Override
     public Resource findOne(Integer id) throws Exception {
         Resource resource = resourceRepository.findResourceById(id);
@@ -22,9 +23,21 @@ public class ResourceServiceImpl implements ResourceService {
         return resource;
     }
 
+    // get all
     @Override
     public List<Resource> findAll() {
         List<Resource> list = resourceRepository.findAll();
         return list;
+    }
+
+    // delete by id
+    @Override
+    public void deleteOne(Integer id) throws Exception {
+        Resource resource = resourceRepository.findResourceById(id);
+        if(resource == null){
+            throw new Exception("Can't DELETE, NO Resource founded by id => "+id);
+        }
+        resourceRepository.deleteById(id);
+        return;
     }
 }
