@@ -7,7 +7,7 @@ import java.util.Set;
 @Table(name = "resource")
 public class Resource {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
@@ -44,5 +44,13 @@ public class Resource {
 
     public void setProjects(Set<ProjectResource> projects) {
         this.projects = projects;
+    }
+
+    public Resource() {
+    }
+
+    public Resource(Integer id, String name) {
+       this.id = id;
+        this.name = name;
     }
 }

@@ -40,4 +40,17 @@ public class ResourceServiceImpl implements ResourceService {
         resourceRepository.deleteById(id);
         return;
     }
+
+    @Override
+    public void addOne(Integer id, String resourceName) throws Exception {
+        Resource resource = resourceRepository.findResourceById(id);
+        if(resource != null){
+            throw new Exception("Can't Add, The Resource Already EXIST; id => "+id);
+        }else{
+            Resource newTemp = new Resource(id,resourceName);
+            resourceRepository.saveAndFlush(newTemp);
+        }
+
+        return;
+    }
 }
