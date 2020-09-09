@@ -12,11 +12,16 @@ public class ProjectController {
         this.projectService = projectService;
     }
 
-
     @PostMapping("/addProject")
     public String addProject(@RequestParam String name) {
         projectService.addProject(name);
         return "Added new Project";
+    }
+
+    @PostMapping("/addResource/")
+    public String addResource(@RequestParam Integer projectResourceId, @RequestParam Integer projectId, @RequestParam Integer resourceId) throws Exception {
+        projectService.addResource(projectResourceId, projectId, resourceId);
+        return "Added Resource to Project";
     }
 
     @GetMapping("/projects")
@@ -24,8 +29,8 @@ public class ProjectController {
         return projectService.findAll();
     }
 
-    @GetMapping("project/{id}")
-    public Project findProjectById (@PathVariable Integer id) throws Exception {
+    @GetMapping("project/")
+    public Project findProjectById (@RequestParam Integer id) throws Exception {
         return projectService.findOne(id);
     }
 }
