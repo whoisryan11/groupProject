@@ -24,12 +24,17 @@ public class ProjectController {
         return "Added Resource to Project";
     }
 
+    @PutMapping("/updateProject/")
+    public Project updateProject(@RequestParam Integer projectId, @RequestParam String name) throws Exception {
+        return projectService.updateProject(projectId, name);
+    }
+
     @GetMapping("/projects")
     public Iterable<Project> getProjects(){
         return projectService.findAll();
     }
 
-    @GetMapping("project/")
+    @GetMapping("/project/")
     public Project findProjectById (@RequestParam Integer id) throws Exception {
         return projectService.findOne(id);
     }
