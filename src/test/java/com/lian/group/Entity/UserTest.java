@@ -2,10 +2,9 @@ package com.lian.group.Entity;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class UserTest {
 
+    private User user;
     @Test
     void getId() {
     }
