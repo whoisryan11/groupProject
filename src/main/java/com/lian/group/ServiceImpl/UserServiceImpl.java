@@ -28,9 +28,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if (user == null) {
             throw new Exception("No User Found!!!");
         }
-        if(user.getUserDetail() != null){
-            user.setUserDetail(null);
-        }
         return user;
     }
 
@@ -46,5 +43,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         return optionalUser.orElseThrow(() -> new UsernameNotFoundException(MessageFormat.format("User with email {0} cannot be found.", username)));
 
+    }
+
+    @Override
+    public User updatePassword(Integer userId, String password) throws Exception {
+        User userToUpdate = userRepository.findUserById(userId);
+        if (userToUpdate == null) {
+            throw new Exception("No User Found!!!");
+        }
+        userToUpdate.setPassword(password);
+        userRepository.save(userToUpdate);
+        return userToUpdate;
     }
 }
