@@ -32,8 +32,8 @@ public class ResourceController {
     }
 
     // delete should use @GetMapping, Because the method use Http GET
-    // @DeleteMapping Doesn't work???
-    //    @DeleteMapping("/deleteResource/{id}")
+    // @DeleteMapping Doesn't work this way I think
+    // @DeleteMapping("/deleteResource/{id}")
     @GetMapping("/deleteResource/{id}")
     public String deleteResourceByID(@PathVariable Integer id) throws Exception {
         resourceService.deleteOne(id);
@@ -41,9 +41,23 @@ public class ResourceController {
     }
 
     //Add
-    @GetMapping("/addResource/{id}&{resourceName}")
-    public String addResource(@PathVariable Integer id,@PathVariable String resourceName) throws Exception{
-        resourceService.addOne(id,resourceName);
+//    old version
+    @GetMapping("/addResource/{resourceName}")
+    public String addResource(@PathVariable String resourceName) throws Exception {
+        resourceService.addOne(resourceName);
         return "Add Successfully";
+    }
+
+    //   @PostMapping failed? cause https using get as default
+//    @RequestMapping(value = "/addResource",method = RequestMethod.POST)
+//    public String addResource(@RequestParam String resourceName) throws Exception{
+//        resourceService.addOne(resourceName);
+//        return "Add Successfully";
+//    }
+
+    @GetMapping("/updateResource/{id}&{resourceName}")
+    public String updateResource(@PathVariable Integer id, @PathVariable String resourceName) throws Exception {
+        resourceService.updateOne(id, resourceName);
+        return "Update Successfully";
     }
 }

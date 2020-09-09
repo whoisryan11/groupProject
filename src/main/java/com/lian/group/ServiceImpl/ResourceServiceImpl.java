@@ -17,8 +17,8 @@ public class ResourceServiceImpl implements ResourceService {
     @Override
     public Resource findOne(Integer id) throws Exception {
         Resource resource = resourceRepository.findResourceById(id);
-        if(resource == null){
-            throw new Exception("NO Resource founded by id => "+id);
+        if (resource == null) {
+            throw new Exception("NO Resource founded by id => " + id);
         }
         return resource;
     }
@@ -34,23 +34,30 @@ public class ResourceServiceImpl implements ResourceService {
     @Override
     public void deleteOne(Integer id) throws Exception {
         Resource resource = resourceRepository.findResourceById(id);
-        if(resource == null){
-            throw new Exception("Can't DELETE, NO Resource founded by id => "+id);
+        if (resource == null) {
+            throw new Exception("Can't DELETE, NO Resource founded by id => " + id);
         }
         resourceRepository.deleteById(id);
         return;
     }
 
     @Override
-    public void addOne(Integer id, String resourceName) throws Exception {
-        Resource resource = resourceRepository.findResourceById(id);
-        if(resource != null){
-            throw new Exception("Can't Add, The Resource Already EXIST; id => "+id);
-        }else{
-            Resource newTemp = new Resource(id,resourceName);
-            resourceRepository.saveAndFlush(newTemp);
-        }
+    public void addOne(String resourceName) {
+
+        Resource newTemp = new Resource(resourceName);
+        resourceRepository.saveAndFlush(newTemp);
 
         return;
+    }
+
+    @Override
+    public void updateOne(Integer id, String resourceName) throws Exception {
+        Resource resource = resourceRepository.findResourceById(id);
+        if (resource == null) {
+            throw new Exception("Can't Update, The Resource Doesn't EXIST; id => " + id);
+        } else {
+            resource.setName(resourceName);
+            resourceRepository.saveAndFlush(resource);
+        }
     }
 }
