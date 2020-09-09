@@ -11,7 +11,8 @@ public class Resource {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
+    // didn't change the variable name, still using 'name'
+    @Column(name = "resource_name")
     private String name;
 
     @OneToMany(
