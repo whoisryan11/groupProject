@@ -7,5 +7,11 @@
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
       <jdbc-url>jdbc:sqlserver://localhost:1433;database=group_project</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="MySQL - group_project_db@localhost" uuid="04bbaabd-b55f-4249-8cbb-b6e25fadb9de">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/group_project_db</jdbc-url>
+    </data-source>
   </component>
 </project>

@@ -17,5 +17,9 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="MySQL - group_project_db@localhost" uuid="04bbaabd-b55f-4249-8cbb-b6e25fadb9de">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <schema-mapping />
+    </data-source>
   </component>
 </project>

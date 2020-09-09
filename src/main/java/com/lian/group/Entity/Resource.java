@@ -11,7 +11,8 @@ public class Resource {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
+    // didn't change the variable name, still using 'name'
+    @Column(name = "resource_name")
     private String name;
 
     @OneToMany(
@@ -19,7 +20,7 @@ public class Resource {
             mappedBy = "resource",
             cascade= {CascadeType.PERSIST, CascadeType.MERGE,
                     CascadeType.DETACH, CascadeType.REFRESH})
-    private Set<ProjectReource> projects;
+    private Set<ProjectResource> projects;
 
     public Integer getId() {
         return id;
@@ -37,11 +38,18 @@ public class Resource {
         this.name = name;
     }
 
-    public Set<ProjectReource> getProjects() {
+    public Set<ProjectResource> getProjects() {
         return projects;
     }
 
-    public void setProjects(Set<ProjectReource> projects) {
+    public void setProjects(Set<ProjectResource> projects) {
         this.projects = projects;
+    }
+
+    public Resource() {
+    }
+
+    public Resource(String name) {
+        this.name = name;
     }
 }
