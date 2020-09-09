@@ -5,12 +5,17 @@ import com.lian.group.Repository.UserDetailRepository;
 import com.lian.group.Repository.UserRepository;
 import com.lian.group.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.text.MessageFormat;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
@@ -33,5 +38,13 @@ public class UserServiceImpl implements UserService {
     public List<User> findAll() {
         List<User> users = userRepository.findAll();
         return users;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) {
+        final Optional<User> optionalUser = userRepository.findByUsername(username);
+
+        return optionalUser.orElseThrow(() -> new UsernameNotFoundException(MessageFormat.format("User with email {0} cannot be found.", username)));
+
     }
 }
