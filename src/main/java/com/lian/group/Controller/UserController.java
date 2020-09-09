@@ -2,10 +2,7 @@ package com.lian.group.Controller;
 
 import com.lian.group.Entity.User;
 import com.lian.group.Service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,9 +21,9 @@ public class UserController {
     }
 
 
-    @GetMapping("getUser/")
-    public User findUserByID (@RequestParam(value = "uid", defaultValue = "100") Integer id) throws Exception {
-        return userService.findOne(id);
+    @GetMapping("getUser/uid={uid}")
+    public User findUserByID (@PathVariable Integer uid) throws Exception {
+        return userService.findOne(uid);
     }
 
     @GetMapping("getUsers")
@@ -34,10 +31,9 @@ public class UserController {
         return userService.findAll();
     }
 
-    @GetMapping("UpdateUser/{uid}/{detail_id}")
-    public User UpdateUserDetail (@PathVariable Integer uid,
+    @GetMapping("AssignUserDetail/uid={uid}&detail_id={detail_id}")
+    public User AssignUserDetail (@PathVariable Integer uid,
                                   @PathVariable Integer detail_id ) throws Exception {
         return userService.assignDetail(uid, detail_id);
     }
-
 }
