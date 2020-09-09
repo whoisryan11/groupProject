@@ -9,14 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Autowired
     private UserRepository userRepository;
 
@@ -42,7 +47,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserDetails loadUserByUsername(String username) {
         final Optional<User> optionalUser = userRepository.findByUsername(username);
 
-        return optionalUser.orElseThrow(() -> new UsernameNotFoundException(MessageFormat.format("User with email {0} cannot be found.", username)));
+        return optionalUser.orElseThrow(() -> new UsernameNotFoundException(MessageFormat.format("User with username {0} cannot be found.", username)));
 
     }
 
@@ -52,7 +57,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if (userToUpdate == null) {
             throw new Exception("No User Found!!!");
         }
-        userToUpdate.setPassword(password);
+        userToUpdate.setPassword(passwordEncoder.encode(password));
         userRepository.save(userToUpdate);
         return userToUpdate;
     }
@@ -70,6 +75,81 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         userToUpdate.setUserDetail(userDetail);
         userRepository.save(userToUpdate);
         return userToUpdate;
+    }
+
+    @Override
+    public User createUser(String username, String password, String email,
+                           String image, String role) throws Exception {
+        // Check if the parameters are empty
+        if (username == null) { throw new Exception("Empty username"); }
+        else if (password == null) { throw new Exception("Empty password");}
+
+        // Create User
+        User newUser = new User();
+        newUser.setUsername(username);
+        newUser.setPassword(passwordEncoder.encode(password));
+        newUser.setEmail(email);
+
+        // Create UserDetail
+        UserDetail detail = new UserDetail();
+        detail.setImage_url(image);
+        detail.setRole(role);
+        detail.setUserRoleRegisterDate(new Date());
+        newUser.setUserDetail(detail);
+
+        // Save User
+        userRepository.save(newUser);
+        return newUser;
+    }
+
+    @Override
+    public User updateEmail(Integer userId, String newEmail) throws Exception {
+        User userToUpdate = userRepository.findUserById(userId);
+        if (userToUpdate == null) {
+            throw new Exception("No Such User Found!!!");
+        }
+        userToUpdate.setEmail(newEmail);
+        userRepository.save(userToUpdate);
+        return userToUpdate;
+    }
+
+    @Override
+    public User updateUserImage(Integer userId, String newImg) throws Exception {
+        User userToUpdate = userRepository.findUserById(userId);
+        if (userToUpdate == null) {
+            throw new Exception("No Such User Found!!!");
+        }
+        UserDetail userDetail = userToUpdate.getUserDetail();
+        if(userDetail == null) {
+            userDetail = new UserDetail();
+            userDetail.setImage_url(newImg);
+            userToUpdate.setUserDetail(userDetail);
+            userRepository.save(userToUpdate);
+        } else {
+            userDetail.setImage_url(newImg);
+        }
+        userDetailRepository.save(userDetail);
+        return userToUpdate;
+    }
+
+    @Override
+    public User updateRole(Integer userId, String newRole) throws Exception {
+        User userToUpdate = userRepository.findUserById(userId);
+        if (userToUpdate == null) {
+            throw new Exception("No Such User Found!!!");
+        }
+        UserDetail userDetail = userToUpdate.getUserDetail();
+        if(userDetail == null) {
+            userDetail = new UserDetail();
+            userDetail.setRole(newRole);
+            userToUpdate.setUserDetail(userDetail);
+            userRepository.save(userToUpdate);
+        } else {
+            userDetail.setRole(newRole);
+        }
+        userDetailRepository.save(userDetail);
+        return userToUpdate;
+
     }
 
 
