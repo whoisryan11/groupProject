@@ -1,30 +1,31 @@
 package com.lian.group.Controller;
 
 import com.lian.group.Entity.Project;
-import com.lian.group.Repository.ProjectRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.lian.group.Service.ProjectService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ProjectController {
-    @Autowired
-    private ProjectRepository projectRepository;
+    private final ProjectService projectService;
 
-    @PostMapping("/addProject")
-    public String addItem(@RequestParam String name) {
-        Project project = new Project();
-        project.setProjectName(name);
-        projectRepository.save(project);
-        return "Added new project to repo!";
+    public ProjectController(ProjectService projectService) {
+        this.projectService = projectService;
     }
 
-    @GetMapping("/project")
+
+    @PostMapping("/addProject")
+    public String addProject(@RequestParam String name) {
+        projectService.addProject(name);
+        return "Added new Project";
+    }
+
+    @GetMapping("/projects")
     public Iterable<Project> getProjects(){
-        return projectRepository.findAll();
+        return projectService.findAll();
     }
 
     @GetMapping("project/{id}")
-    public Project findProjectById (@PathVariable Integer id) {
-        return projectRepository.findProjectById(id);
+    public Project findProjectById (@PathVariable Integer id) throws Exception {
+        return projectService.findOne(id);
     }
 }
