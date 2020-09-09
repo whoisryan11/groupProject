@@ -3,6 +3,7 @@ package com.lian.group.Controller;
 import com.lian.group.Entity.User;
 import com.lian.group.Service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,4 +33,11 @@ public class UserController {
     public List<User> getUsers(){
         return userService.findAll();
     }
+
+    @GetMapping("UpdateUser/{uid}/{detail_id}")
+    public User UpdateUserDetail (@PathVariable Integer uid,
+                                  @PathVariable Integer detail_id ) throws Exception {
+        return userService.assignDetail(uid, detail_id);
+    }
+
 }

@@ -10,4 +10,5 @@ public interface UserService  {
     List<User> findAll();
     UserDetails loadUserByUsername(String username);
     User updatePassword(Integer userId, String password) throws Exception;
+    User assignDetail(Integer userId, Integer userDetailId) throws Exception;
 }

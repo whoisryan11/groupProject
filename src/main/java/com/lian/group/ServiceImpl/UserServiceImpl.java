@@ -1,6 +1,7 @@
 package com.lian.group.ServiceImpl;
 
 import com.lian.group.Entity.User;
+import com.lian.group.Entity.UserDetail;
 import com.lian.group.Repository.UserDetailRepository;
 import com.lian.group.Repository.UserRepository;
 import com.lian.group.Service.UserService;
@@ -55,4 +56,21 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         userRepository.save(userToUpdate);
         return userToUpdate;
     }
+
+    @Override
+    public User assignDetail(Integer userId, Integer userDetailId) throws Exception {
+        User userToUpdate = userRepository.findUserById(userId);
+        UserDetail userDetail = userDetailRepository.findUserDetailById(userDetailId);
+        if (userToUpdate == null) {
+            throw new Exception("No User Found!!!");
+        }
+        if (userDetail == null) {
+            throw new Exception("No User Found!!!");
+        }
+        userToUpdate.setUserDetail(userDetail);
+        userRepository.save(userToUpdate);
+        return userToUpdate;
+    }
+
+
 }
