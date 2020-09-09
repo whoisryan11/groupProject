@@ -16,7 +16,7 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public String sayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
+    public String SayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
         /**
          * Used for Updating plain text password to Bcrypt password in the database
          * 1. Change the type Password column to binary(60)
@@ -27,37 +27,59 @@ public class UserController {
     }
 
 
-    @GetMapping("getUser/uid={uid}")
-    public String findUserByID (@PathVariable Integer uid) throws Exception {
+    @GetMapping("getUser/")
+    public String FindUserByID (@RequestParam Integer uid) throws Exception {
         User user = userService.findOne(uid);
         return String.format("GETTING User: %s!", user.getUsername());
     }
 
     @GetMapping("getUsers")
-    public List<User> getUsers(){
+    public List<User> GetUsers(){
         return userService.findAll();
     }
 
-    @PostMapping("updatePassword/uid={uid}&pwd={pwd}")
-    public String updatePasword(@PathVariable Integer uid,
-                                @PathVariable String pwd) throws Exception {
+    @PostMapping("/updatePassword")
+    public String UpdatePassword(@RequestParam Integer uid,
+                                 @RequestParam String pwd) throws Exception {
         User user = userService.updatePassword(uid, pwd);
         return "Password Updated";
     }
 
-    @GetMapping("assignUserDetail/uid={uid}&detail_id={detail_id}")
-    public User AssignUserDetail(@PathVariable Integer uid,
-                                 @PathVariable Integer detail_id) throws Exception {
-        return userService.assignDetail(uid, detail_id);
+    @PostMapping("/assignUserDetail")
+    public String AssignUserDetail(@RequestParam Integer uid,
+                                 @RequestParam Integer detail_id) throws Exception {
+        userService.assignDetail(uid, detail_id);
+        return "User Detail Assigned";
     }
 
-    @GetMapping("createUser/username={username}&password={pwd}&email={email}&imgUrl={img}&role={role}")
-    public User CreateUser(@PathVariable String username,
-                             @PathVariable String pwd,
-                             @PathVariable String email,
-                             @PathVariable String img,
-                             @PathVariable String role) throws Exception {
+    @PostMapping("/createUser")
+    public User CreateUser(@RequestParam String username,
+                             @RequestParam String pwd,
+                             @RequestParam String email,
+                             @RequestParam String img,
+                             @RequestParam String role) throws Exception {
         User newUser = userService.createUser(username, pwd, email, img, role);
         return newUser;
+    }
+
+    @PostMapping("/updateEmail")
+    public String UpdateEmail(@RequestParam Integer uid,
+                              @RequestParam String email) throws Exception {
+        User user = userService.updateEmail(uid, email);
+        return "Email Updated";
+    }
+
+    @PostMapping("/updateImg")
+    public String UpdateImage(@RequestParam Integer uid,
+                              @RequestParam String u_img) throws Exception {
+        User user = userService.updateUserImage(uid, u_img);
+        return "User's Image Updated";
+    }
+
+    @PostMapping("/updateRole")
+    public String UpdateRole(@RequestParam Integer uid,
+                             @RequestParam String role) throws Exception {
+        User user = userService.updateRole(uid, role);
+        return "User's Role Updated";
     }
 }
