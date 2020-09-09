@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Formula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "formula_id")
     private Integer id;
 
     @Column(name = "cost_code")
@@ -16,6 +16,7 @@ public class Formula {
     @Column(name = "item_id")
     private Integer itemId;
 
+    // here I will change the mysql type varchar(45) to enumerable later
     @Column(name = "editable")
     private boolean editable;
 

@@ -17,6 +17,15 @@
 <!--    <properties>-->
 <!--        <java.version>1.11</java.version>-->
 <!--    </properties>-->
+
+<!--    When wanna change from JDK11==>JDK8-->
+<!--    Steps:-->
+<!--    1. Download JDK8-->
+<!--    2. File ==> Project Structure ==> platform setting ==> "+"==>"find your JDK8"-->
+<!--    3. Project Structure ==> Project Setting==> Project ==>"set all to 1.8"-->
+<!--    4. Project Setting==> module ==>{source, dependency}"set all to 1.8"-->
+<!--    5. rebuild ur module-->
+<!--    6. check pom.xml whether it is jdk 1.8 here-->
     <properties>
         <java.version>1.8</java.version>
     </properties>
