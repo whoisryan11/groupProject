@@ -10,4 +10,5 @@ public interface ProjectService {
     String addProject(String projectName);
     String deleteProjectById(Integer projectId) throws Exception;
     String addResource(Integer projectResourceId, Integer projectId, Integer resourceId) throws Exception;
+    Project updateProject(Integer projectId, String projectName) throws Exception;
 }

@@ -23,7 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a03c06a-47db-4a2e-8f88-e13febabef29" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/02e43eab-b125-4ec8-87a2-403647f134c2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/02e43eab-b125-4ec8-87a2-403647f134c2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/group.iml" beforeDir="false" afterPath="$PROJECT_DIR$/group.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,67 +49,12 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="group_project@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="MySQL - group_project_db@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="group_project@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="group_project: database" type="ccb7ac2a:MsImplModel$Database" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="group_project@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="group_project: database" type="ccb7ac2a:MsImplModel$Database" />
-        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="group_project@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="group_project: database" type="ccb7ac2a:MsImplModel$Database" />
-        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
-        <item name="field: table" type="63ab2ba1:MsImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="group_project@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="group_project: database" type="ccb7ac2a:MsImplModel$Database" />
-        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
-        <item name="formula: table" type="63ab2ba1:MsImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="group_project@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="group_project: database" type="ccb7ac2a:MsImplModel$Database" />
-        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
-        <item name="project_resource: table" type="63ab2ba1:MsImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="group_project@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="group_project: database" type="ccb7ac2a:MsImplModel$Database" />
-        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
-        <item name="resource: table" type="63ab2ba1:MsImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="group_project@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="group_project: database" type="ccb7ac2a:MsImplModel$Database" />
-        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
-        <item name="type: table" type="63ab2ba1:MsImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="group_project@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="group_project: database" type="ccb7ac2a:MsImplModel$Database" />
-        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
-        <item name="user_detail: table" type="63ab2ba1:MsImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="group_project@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="group_project: database" type="ccb7ac2a:MsImplModel$Database" />
-        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
-        <item name="users: table" type="63ab2ba1:MsImplModel$Table" />
+        <item name="MySQL - group_project_db@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
     </expand>
     <select />
@@ -129,7 +76,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Users\Rong\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -153,7 +100,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.097751714" />
     <property name="project.structure.side.proportion" value="0.5367816" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
@@ -220,7 +167,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -238,23 +185,25 @@
       <workItem from="1599231244282" duration="5022000" />
       <workItem from="1599245166817" duration="1003000" />
       <workItem from="1599250774557" duration="76000" />
+      <workItem from="1599690055583" duration="17000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1247" y="387" key="#Assign_Data_Sources" timestamp="1599075496255">
@@ -282,50 +231,50 @@
     </state>
     <state x="1003" y="333" key="FileChooserDialogImpl/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599245338567" />
     <state x="752" y="247" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599250789599" />
-    <state width="1256" height="440" key="GridCell.Tab.0.bottom" timestamp="1599245943923">
+    <state width="1645" height="396" key="GridCell.Tab.0.bottom" timestamp="1599690017991">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1256" height="440" key="GridCell.Tab.0.bottom/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599245943923" />
-    <state width="1256" height="440" key="GridCell.Tab.0.center" timestamp="1599245943922">
+    <state width="1645" height="396" key="GridCell.Tab.0.bottom/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599690017991" />
+    <state width="1645" height="396" key="GridCell.Tab.0.center" timestamp="1599690017991">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1256" height="440" key="GridCell.Tab.0.center/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599245943922" />
-    <state width="1256" height="440" key="GridCell.Tab.0.left" timestamp="1599245943922">
+    <state width="1645" height="396" key="GridCell.Tab.0.center/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599690017991" />
+    <state width="1645" height="396" key="GridCell.Tab.0.left" timestamp="1599690017991">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1256" height="440" key="GridCell.Tab.0.left/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599245943922" />
-    <state width="1256" height="440" key="GridCell.Tab.0.right" timestamp="1599245943923">
+    <state width="1645" height="396" key="GridCell.Tab.0.left/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599690017991" />
+    <state width="1645" height="396" key="GridCell.Tab.0.right" timestamp="1599690017991">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1256" height="440" key="GridCell.Tab.0.right/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599245943923" />
-    <state width="1256" height="440" key="GridCell.Tab.1.bottom" timestamp="1599245943923">
+    <state width="1645" height="396" key="GridCell.Tab.0.right/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599690017991" />
+    <state width="1645" height="396" key="GridCell.Tab.1.bottom" timestamp="1599690017992">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1256" height="440" key="GridCell.Tab.1.bottom/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599245943923" />
-    <state width="1256" height="440" key="GridCell.Tab.1.center" timestamp="1599245943923">
+    <state width="1645" height="396" key="GridCell.Tab.1.bottom/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599690017992" />
+    <state width="1645" height="396" key="GridCell.Tab.1.center" timestamp="1599690017991">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1256" height="440" key="GridCell.Tab.1.center/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599245943923" />
-    <state width="1256" height="440" key="GridCell.Tab.1.left" timestamp="1599245943923">
+    <state width="1645" height="396" key="GridCell.Tab.1.center/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599690017991" />
+    <state width="1645" height="396" key="GridCell.Tab.1.left" timestamp="1599690017991">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1256" height="440" key="GridCell.Tab.1.left/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599245943923" />
-    <state width="1256" height="440" key="GridCell.Tab.1.right" timestamp="1599245943923">
+    <state width="1645" height="396" key="GridCell.Tab.1.left/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599690017991" />
+    <state width="1645" height="396" key="GridCell.Tab.1.right" timestamp="1599690017991">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1256" height="440" key="GridCell.Tab.1.right/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599245943923" />
-    <state x="772" y="303" width="1403" height="851" key="SettingsEditor" timestamp="1599245978934">
+    <state width="1645" height="396" key="GridCell.Tab.1.right/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599690017991" />
+    <state x="772" y="303" width="1403" height="851" key="SettingsEditor" timestamp="1599690072608">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="772" y="303" width="1403" height="851" key="SettingsEditor/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599245978934" />
+    <state x="772" y="303" width="1403" height="851" key="SettingsEditor/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599690072608" />
     <state x="1348" y="344" key="com.intellij.database.dbimport.ImportDialog" timestamp="1599075981482">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1348" y="344" key="com.intellij.database.dbimport.ImportDialog/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599075981482" />
-    <state x="898" y="627" key="com.intellij.ide.util.TipDialog" timestamp="1599245168360">
+    <state x="898" y="627" key="com.intellij.ide.util.TipDialog" timestamp="1599690056182">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="898" y="627" key="com.intellij.ide.util.TipDialog/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599245168360" />
+    <state x="898" y="627" key="com.intellij.ide.util.TipDialog/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599690056182" />
     <state x="1680" y="70" width="694" height="819" key="dock-window-1" timestamp="1599230408476">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -338,6 +287,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="381" y="83" width="1319" height="1089" key="dock-window-3/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599079681826" />
+    <state x="184" y="0" width="845" height="938" key="dock-window-4" timestamp="1599690018101">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="184" y="0" width="845" height="938" key="dock-window-4/-1440.-413.1440.2520/0.0.2560.1400@0.0.2560.1400" timestamp="1599690018101" />
     <state x="503" y="542" key="new project wizard" timestamp="1599245784761">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

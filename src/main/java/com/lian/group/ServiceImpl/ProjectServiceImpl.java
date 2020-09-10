@@ -67,6 +67,16 @@ public class ProjectServiceImpl implements ProjectService {
         return "Project and Resource saved in ProjectRepo!!";
     }
 
+    public Project updateProject(Integer projectId, String projectName) throws Exception{
+        Project project = projectRepository.findProjectById(projectId);
+        if(project == null){
+            throw new Exception("No project found");
+        }
+        project.setProjectName(projectName);
+        projectRepository.save(project);
+        return project;
+    }
+
     @Override
     public String deleteProjectById(Integer projectId) throws Exception {
         Project project = projectRepository.findProjectById(projectId);

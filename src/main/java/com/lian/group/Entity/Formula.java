@@ -5,18 +5,19 @@ import javax.persistence.*;
 @Entity
 @Table(name = "formula")
 public class Formula {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "formula_id")
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "cost_code")
-    private String costCode;
+    private Integer costCode;
 
     @Column(name = "item_id")
     private Integer itemId;
 
-    // here I will change the mysql type varchar(45) to enumerable later
+    //changed the mysql type varchar(45) to enumerable/tinyint
     @Column(name = "editable")
     private boolean editable;
 
@@ -34,11 +35,11 @@ public class Formula {
         this.id = id;
     }
 
-    public String getCostCode() {
+    public Integer getCostCode() {
         return costCode;
     }
 
-    public void setCostCode(String costCode) {
+    public void setCostCode(Integer costCode) {
         this.costCode = costCode;
     }
 
@@ -64,5 +65,14 @@ public class Formula {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public Formula() {
+    }
+
+    public Formula(Integer costCode, Integer itemId, boolean editable) {
+        this.costCode = costCode;
+        this.itemId = itemId;
+        this.editable = editable;
     }
 }
