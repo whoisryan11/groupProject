@@ -106,7 +106,7 @@ public class ResourceController {
     @PostMapping("/addFormula")
     public String addFormula(@RequestParam Integer costCode, @RequestParam Integer itemId,@RequestParam boolean editable) {
         formulaService.addOne(costCode, itemId, editable);
-        return "Delete Formula Successfully";
+        return "Add Formula Successfully";
     }
 
     //---Update

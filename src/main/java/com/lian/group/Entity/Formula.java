@@ -8,7 +8,7 @@ public class Formula {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "formula_id")
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "cost_code")
