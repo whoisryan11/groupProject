@@ -8,6 +8,10 @@ import java.util.List;
 
 @Repository
 public interface FormulaRepository extends JpaRepository<Formula,Integer> {
-    Formula findFormulaById(Integer formulaID);
+    Formula findFormulaById(Integer formulaId);
     List<Formula> findAll();
+    void deleteById(Integer integer);
+    List<Formula> findAllByCostCode(Integer costCode);
+    List<Formula> findAllByItemId(Integer itemId);
+    List<Formula>  findAllByEditable(boolean editable);
 }
