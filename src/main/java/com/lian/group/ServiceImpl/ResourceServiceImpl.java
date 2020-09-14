@@ -23,6 +23,15 @@ public class ResourceServiceImpl implements ResourceService {
         return resource;
     }
 
+    @Override
+    public Resource findName(String resourceName) throws Exception {
+        Resource resource = resourceRepository.findResourceByName(resourceName);
+        if (resource == null) {
+            throw new Exception("NO Resource founded by resourceName => " + resourceName);
+        }
+        return resource;
+    }
+
     // get all
     @Override
     public List<Resource> findAll() {

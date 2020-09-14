@@ -30,34 +30,42 @@ public class ResourceController {
         return resourceService.findOne(id);
     }
 
+    @GetMapping("/getResourceName/")
+    public Resource findResourceByResourceName(@RequestParam String resourceName) throws Exception{
+        return resourceService.findName(resourceName);
+    };
+
     @GetMapping("/getResources")
     public List<Resource> getAllResources() {
         return resourceService.findAll();
     }
 
-    // delete should use @GetMapping, Because the method use Http GET
-    // @DeleteMapping Doesn't work this way I think
-    // @DeleteMapping("/deleteResource/{id}")
-    @GetMapping("/deleteResource/{id}")
-    public String deleteResourceByID(@PathVariable Integer id) throws Exception {
+    // Old version
+//    @GetMapping("/deleteResource/{id}")
+//    public String deleteResourceByID(@PathVariable Integer id) throws Exception {
+//        resourceService.deleteOne(id);
+//        return "Delete Resource Successfully";
+//    }
+    @DeleteMapping("/deleteResource")
+    public String deleteResourceByID(@RequestParam Integer id) throws Exception {
         resourceService.deleteOne(id);
         return "Delete Resource Successfully";
     }
 
     //Add
 //    old version
-    @GetMapping("/addResource/{resourceName}")
-    public String addResource(@PathVariable String resourceName) {
+//    @GetMapping("/addResource/{resourceName}")
+//    public String addResource(@PathVariable String resourceName) {
+//        resourceService.addOne(resourceName);
+//        return "Add Resource Successfully";
+//    }
+
+    //   @PostMapping failed? cause https using get as default
+    @PostMapping("/addNewResource")
+    public String addResource(@RequestParam String resourceName) {
         resourceService.addOne(resourceName);
         return "Add Resource Successfully";
     }
-
-    //   @PostMapping failed? cause https using get as default
-//    @RequestMapping(value = "/addResource",method = RequestMethod.POST)
-//    public String addResource(@RequestParam String resourceName) throws Exception{
-//        resourceService.addOne(resourceName);
-//        return "Add Successfully";
-//    }
 
     @GetMapping("/updateResource/{id}&{resourceName}")
     public String updateResource(@PathVariable Integer id, @PathVariable String resourceName) throws Exception {
