@@ -89,16 +89,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         newUser.setUsername(username);
         newUser.setPassword(passwordEncoder.encode(password));
         newUser.setEmail(email);
-
+        userRepository.saveAndFlush(newUser);
         // Create UserDetail
         UserDetail detail = new UserDetail();
         detail.setImage_url(image);
         detail.setRole(role);
         detail.setUserRoleRegisterDate(new Date());
-        newUser.setUserDetail(detail);
-
+        userDetailRepository.save(detail);
+        //newUser.setUserDetail(detail);
         // Save User
-        userRepository.save(newUser);
+        newUser.setUserDetail(detail);
+        userRepository.saveAndFlush(newUser);
         return newUser;
     }
 
