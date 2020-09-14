@@ -1,4 +1,4 @@
-package com.lian.group.ServiceImpl;
+package com.lian.group.Service.ServiceImpl;
 
 import com.lian.group.Entity.Resource;
 import com.lian.group.Repository.ResourceRepository;

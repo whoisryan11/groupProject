@@ -1,9 +1,10 @@
 package com.lian.group.Service;
 
 import com.lian.group.Entity.User;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 public interface UserService  {
     // Find user by user id
@@ -11,9 +12,6 @@ public interface UserService  {
 
     // Find all the users
     List<User> findAll();
-
-    // Used for login
-    UserDetails loadUserByUsername(String username);
 
     // Update password
     User updatePassword(Integer userId, String password) throws Exception;
