@@ -1,9 +1,9 @@
 package com.lian.group.Controller;
 
-import com.lian.group.AuthenticationRequest;
-import com.lian.group.AuthenticationResponse;
+import com.lian.group.Security.AuthenticationRequest;
+import com.lian.group.Security.AuthenticationResponse;
 import com.lian.group.Entity.User;
-import com.lian.group.MyUserDetailsService;
+import com.lian.group.Security.MyUserDetailsService;
 import com.lian.group.Service.UserService;
 import com.lian.group.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;

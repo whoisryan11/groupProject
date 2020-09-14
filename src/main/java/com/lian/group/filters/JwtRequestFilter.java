@@ -1,6 +1,6 @@
 package com.lian.group.filters;
 
-import com.lian.group.MyUserDetailsService;
+import com.lian.group.Security.MyUserDetailsService;
 import com.lian.group.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,4 +1,4 @@
-package com.lian.group;
+package com.lian.group.Security;
 
 import com.lian.group.Entity.User;
 import com.lian.group.Repository.UserRepository;

@@ -1,4 +1,4 @@
-package com.lian.group;
+package com.lian.group.Security;
 
 public class AuthenticationResponse {
 

@@ -1,4 +1,4 @@
-package com.lian.group;
+package com.lian.group.Security;
 
 import com.lian.group.filters.JwtRequestFilter;
 import lombok.AllArgsConstructor;
