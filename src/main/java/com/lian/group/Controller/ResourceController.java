@@ -33,7 +33,7 @@ public class ResourceController {
     @GetMapping("/getResourceName/")
     public Resource findResourceByResourceName(@RequestParam String resourceName) throws Exception{
         return resourceService.findName(resourceName);
-    };
+    }
 
     @GetMapping("/getResources")
     public List<Resource> getAllResources() {
@@ -52,21 +52,24 @@ public class ResourceController {
         return "Delete Resource Successfully";
     }
 
-    //Add
+    //---Add
 //    old version
+
 //    @GetMapping("/addResource/{resourceName}")
 //    public String addResource(@PathVariable String resourceName) {
 //        resourceService.addOne(resourceName);
 //        return "Add Resource Successfully";
 //    }
 
-    //   @PostMapping failed? cause https using get as default
+    //   @PostMapping failed? Because https:// uses method "get" as default
+
     @PostMapping("/addNewResource")
     public String addResource(@RequestParam String resourceName) {
         resourceService.addOne(resourceName);
         return "Add Resource Successfully";
     }
 
+    // PostMapping and getMapping both worked here
     @GetMapping("/updateResource/{id}&{resourceName}")
     public String updateResource(@PathVariable Integer id, @PathVariable String resourceName) throws Exception {
         resourceService.updateOne(id, resourceName);
