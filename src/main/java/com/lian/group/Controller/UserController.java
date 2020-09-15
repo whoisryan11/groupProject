@@ -82,10 +82,10 @@ public class UserController {
     }
 
     @PostMapping("/assignUserDetail")
-    public String assignUserDetail(@RequestParam Integer uid,
+    public ResponseEntity<?> assignUserDetail(@RequestParam Integer uid,
                                  @RequestParam Integer detail_id) throws Exception {
-        userService.assignDetail(uid, detail_id);
-        return "User Detail Assigned";
+        User user = userService.assignDetail(uid, detail_id);
+        return ResponseEntity.ok(user);
     }
 
     @PostMapping("/createUser")
