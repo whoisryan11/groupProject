@@ -47,22 +47,17 @@ public class UserController {
 
     }
 
-    @RequestMapping({ "/hello" })
-    public String firstPage() {
-        return "Hello World";
-    }
-
+/**
     @GetMapping("/")
     public String sayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
-        /**
          * Used for Updating plain text password to Bcrypt password in the database
          * 1. Change the type Password column to binary(60)
          * 2. Call the userService.updatePassword(uid, password) here
-         * 3. Once password is set comment out this line and you can login with updated password*/
+         * 3. Once password is set comment out this line and you can login with updated password
         //userService.updatePassword(100, "password1");
         return String.format("Hello %s!", name);
     }
-
+*/
 
     @GetMapping("getUser")
     public String findUserByID (@RequestParam Integer uid) throws Exception {
