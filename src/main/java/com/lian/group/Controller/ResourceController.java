@@ -4,15 +4,19 @@ import com.lian.group.Entity.Formula;
 import com.lian.group.Entity.Resource;
 import com.lian.group.Service.FormulaService;
 import com.lian.group.Service.ResourceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// what is a @restController?
+// what is a @restController; all class will got a @ResponseBody as default
 @RestController
 public class ResourceController {
     // All functions are using by Interface function, so you may imp it latter
+    @Autowired
     private final ResourceService resourceService;
+    @Autowired
     private final FormulaService formulaService;
 
     // initialize it
@@ -26,18 +30,22 @@ public class ResourceController {
      */
     // what is @pathVar ==> use to refer {id} in url
     @GetMapping("/getResource/{id}")
-    public Resource findResourceByID(@PathVariable Integer id) throws Exception {
-        return resourceService.findOne(id);
+    public ResponseEntity<?> findResourceByID(@PathVariable Integer id) throws Exception {
+        Resource resource = resourceService.findOne(id);
+        return ResponseEntity.ok(resource);
     }
 
-    @GetMapping("/getResourceName/")
-    public Resource findResourceByResourceName(@RequestParam String resourceName) throws Exception{
-        return resourceService.findName(resourceName);
+    @GetMapping("/getResourceName")
+    public ResponseEntity<?> findResourceByResourceName(@RequestParam String resourceName) throws Exception{
+
+        Resource resource = resourceService.findName(resourceName);
+        return ResponseEntity.ok(resource);
     }
 
     @GetMapping("/getResources")
-    public List<Resource> getAllResources() {
-        return resourceService.findAll();
+    public ResponseEntity<List<Resource>> getAllResources() {
+        List<Resource> resources = resourceService.findAll();
+        return ResponseEntity.ok(resources);
     }
 
     // Old version
@@ -47,9 +55,12 @@ public class ResourceController {
 //        return "Delete Resource Successfully";
 //    }
     @DeleteMapping("/deleteResource")
-    public String deleteResourceByID(@RequestParam Integer id) throws Exception {
+    public ResponseEntity<?> deleteResourceByID(@RequestParam Integer id) throws Exception {
+        // this find(id) will run 2 times which make no sense. Change after Test.
+//        Resource resource = resourceService.findOne(id);
+
         resourceService.deleteOne(id);
-        return "Delete Resource Successfully";
+        return ResponseEntity.ok("Resource Deleted");
     }
 
     //---Add
@@ -64,16 +75,17 @@ public class ResourceController {
     //   @PostMapping failed? Because https:// uses method "get" as default
 
     @PostMapping("/addNewResource")
-    public String addResource(@RequestParam String resourceName) {
+    public ResponseEntity<?> addResource(@RequestParam String resourceName) {
         resourceService.addOne(resourceName);
-        return "Add Resource Successfully";
+        return ResponseEntity.ok("Resource Added");
     }
 
-    // PostMapping and getMapping both worked here
-    @GetMapping("/updateResource/{id}&{resourceName}")
-    public String updateResource(@PathVariable Integer id, @PathVariable String resourceName) throws Exception {
+    // @PostMapping and @GetMapping both worked here,but need @pathvariable in Get
+//    @GetMapping("/updateResource/{id}&{resourceName}")
+    @PutMapping("/updateResource")
+    public ResponseEntity<?> updateResource(@RequestBody Integer id, String resourceName) throws Exception {
         resourceService.updateOne(id, resourceName);
-        return "Update Resource Successfully";
+        return ResponseEntity.ok("Resource Updated");
     }
 
     /**
@@ -82,61 +94,66 @@ public class ResourceController {
 
     //Using EX:  http://localhost:8080/getFormulaByID/?id=1
     @GetMapping("/getFormulaByID")
-    public Formula findFormulaByID(@RequestParam Integer id) throws Exception {
-        return formulaService.findOne(id);
+    public ResponseEntity<?> findFormulaByID(@RequestParam Integer id) throws Exception {
+        Formula formula = formulaService.findOne(id);
+        return  ResponseEntity.ok(formula);
     }
 
     //Duplicate row returns, using findAllBy...()
     @GetMapping("/getFormulaByCostCode")
-    public List<Formula> findFormulaByCostCode(@RequestParam Integer costCode) throws Exception {
-        return formulaService.findByCostCode(costCode);
+    public ResponseEntity<List<Formula>> findFormulaByCostCode(@RequestParam Integer costCode) throws Exception {
+        List<Formula> formulas = formulaService.findByCostCode(costCode);
+        return  ResponseEntity.ok(formulas);
     }
 
     @GetMapping("/getFormulaByItemID")
-    public List<Formula> findFormulaByItemID(@RequestParam Integer itemID) throws Exception {
-        return formulaService.findByItemId(itemID);
+    public ResponseEntity<List<Formula>> findFormulaByItemID(@RequestParam Integer itemID) throws Exception {
+        List<Formula> formulas =formulaService.findByItemId(itemID);
+        return ResponseEntity.ok(formulas);
     }
 
     @GetMapping("/getFormulaByEditable")
-    public List<Formula> findFormulaByItemID(@RequestParam boolean editable) throws Exception {
-        return formulaService.findByEditable(editable);
+    public ResponseEntity<List<Formula>> findFormulaByItemID(@RequestParam boolean editable) throws Exception {
+        List<Formula> formulas =formulaService.findByEditable(editable);
+        return ResponseEntity.ok(formulas);
     }
 
     @GetMapping("/getFormulas")
-    public List<Formula> getAllFormulas() {
-        return formulaService.findAll();
+    public ResponseEntity<List<Formula>> getAllFormulas() {
+        List<Formula> formulas =formulaService.findAll();
+        return ResponseEntity.ok(formulas);
     }
 
     //---Delete
     @DeleteMapping("/deleteFormula")
-    public String deleteFormulaByID(@RequestParam Integer id) throws Exception {
+    public ResponseEntity<?> deleteFormulaByID(@RequestParam Integer id) throws Exception {
         formulaService.deleteOne(id);
-        return "Delete Formula Successfully";
+        return ResponseEntity.ok("Delete Formula Successfully");
     }
 
     @PostMapping("/addFormula")
-    public String addFormula(@RequestParam Integer costCode, @RequestParam Integer itemId,@RequestParam boolean editable) {
+    public ResponseEntity<?> addFormula(@RequestParam Integer costCode, @RequestParam Integer itemId,@RequestParam boolean editable) {
         formulaService.addOne(costCode, itemId, editable);
-        return "Add Formula Successfully";
+        return ResponseEntity.ok("Add Formula Successfully");
     }
 
     //---Update
     @PostMapping("/updateCostCode")
-    public String updateFormulaCostCode(@RequestParam Integer id, @RequestParam Integer costCode) throws Exception {
+    public ResponseEntity<?> updateFormulaCostCode(@RequestParam Integer id, @RequestParam Integer costCode) throws Exception {
         formulaService.updateCostCode(id, costCode);
-        return "Update CostCode successfully";
+        return ResponseEntity.ok("Update CostCode successfully");
     }
 
     @PostMapping("/updateItemID")
-    public String updateFormulaItemID(@RequestParam Integer id, @RequestParam Integer itemID) throws Exception {
+    public ResponseEntity<?> updateFormulaItemID(@RequestParam Integer id, @RequestParam Integer itemID) throws Exception {
         formulaService.updateItemId(id, itemID);
-        return "Update ItemID successfully";
+        return ResponseEntity.ok("Update ItemID successfully");
     }
 
     @PostMapping("/updateEditable")
-    public String updateFormulaEditable(@RequestParam Integer id, @RequestParam boolean editable) throws Exception {
+    public ResponseEntity<?> updateFormulaEditable(@RequestParam Integer id, @RequestParam boolean editable) throws Exception {
         formulaService.updateEditable(id, editable);
-        return "Update Editable successfully";
+        return ResponseEntity.ok("Update Editable successfully");
     }
 
 }

@@ -47,7 +47,6 @@ public class ResourceServiceImpl implements ResourceService {
             throw new Exception("Can't DELETE, NO Resource founded by id => " + id);
         }
         resourceRepository.deleteById(id);
-        return;
     }
 
     @Override
@@ -56,7 +55,6 @@ public class ResourceServiceImpl implements ResourceService {
         Resource newTemp = new Resource(resourceName);
         resourceRepository.saveAndFlush(newTemp);
 
-        return;
     }
 
     @Override
