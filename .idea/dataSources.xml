@@ -13,5 +13,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/group_project_db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="group_project_db@localhost" uuid="f26e660e-5c09-4afe-a2df-7bc1f3dbed82">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/group_project_db</jdbc-url>
+    </data-source>
   </component>
 </project>

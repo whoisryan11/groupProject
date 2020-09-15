@@ -2,6 +2,8 @@ package com.lian.group.Controller;
 
 import com.lian.group.Entity.Project;
 import com.lian.group.Service.ProjectService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,29 +15,30 @@ public class ProjectController {
     }
 
     @PostMapping("/addProject")
-    public String addProject(@RequestParam String name) {
+    public ResponseEntity<String> addProject(@RequestParam String name) {
         projectService.addProject(name);
-        return "Added new Project";
+        return new ResponseEntity<>("Added new Project" + name, HttpStatus.OK);
     }
 
     @PostMapping("/addResource/")
-    public String addResource(@RequestParam Integer projectResourceId, @RequestParam Integer projectId, @RequestParam Integer resourceId) throws Exception {
+    public ResponseEntity<String> addResource(@RequestParam Integer projectResourceId, @RequestParam Integer projectId, @RequestParam Integer resourceId) throws Exception {
         projectService.addResource(projectResourceId, projectId, resourceId);
-        return "Added Resource to Project";
+        return new ResponseEntity<>("Added Resource to Project" + resourceId, HttpStatus.OK);
     }
 
     @PutMapping("/updateProject/")
-    public Project updateProject(@RequestParam Integer projectId, @RequestParam String name) throws Exception {
-        return projectService.updateProject(projectId, name);
+    public ResponseEntity<Project> updateProject(@RequestParam Integer projectId, @RequestParam String name) throws Exception {
+        return new ResponseEntity<>(projectService.updateProject(projectId, name), HttpStatus.OK);
     }
 
     @GetMapping("/projects")
-    public Iterable<Project> getProjects(){
-        return projectService.findAll();
+    public ResponseEntity<Iterable<Project>> getProjects(){
+        Iterable<Project> projects = projectService.findAll();
+        return new ResponseEntity<>(projects, HttpStatus.OK);
     }
 
     @GetMapping("/project/")
-    public Project findProjectById (@RequestParam Integer id) throws Exception {
-        return projectService.findOne(id);
+    public ResponseEntity<Project> findProjectById (@RequestParam Integer id) throws Exception {
+        return new ResponseEntity<>(projectService.findOne(id), HttpStatus.OK);
     }
 }

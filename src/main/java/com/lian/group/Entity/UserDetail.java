@@ -8,6 +8,7 @@ import java.util.Date;
 public class UserDetail {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 /**
     @OneToOne(mappedBy="userDetail",

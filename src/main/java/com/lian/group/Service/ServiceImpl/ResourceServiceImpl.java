@@ -1,4 +1,4 @@
-package com.lian.group.ServiceImpl;
+package com.lian.group.Service.ServiceImpl;
 
 import com.lian.group.Entity.Resource;
 import com.lian.group.Repository.ResourceRepository;
@@ -23,6 +23,15 @@ public class ResourceServiceImpl implements ResourceService {
         return resource;
     }
 
+    @Override
+    public Resource findName(String resourceName) throws Exception {
+        Resource resource = resourceRepository.findResourceByName(resourceName);
+        if (resource == null) {
+            throw new Exception("NO Resource founded by resourceName => " + resourceName);
+        }
+        return resource;
+    }
+
     // get all
     @Override
     public List<Resource> findAll() {
@@ -38,7 +47,6 @@ public class ResourceServiceImpl implements ResourceService {
             throw new Exception("Can't DELETE, NO Resource founded by id => " + id);
         }
         resourceRepository.deleteById(id);
-        return;
     }
 
     @Override
@@ -47,7 +55,6 @@ public class ResourceServiceImpl implements ResourceService {
         Resource newTemp = new Resource(resourceName);
         resourceRepository.saveAndFlush(newTemp);
 
-        return;
     }
 
     @Override

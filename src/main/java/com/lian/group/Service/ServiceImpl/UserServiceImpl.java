@@ -1,4 +1,4 @@
-package com.lian.group.ServiceImpl;
+package com.lian.group.Service.ServiceImpl;
 
 import com.lian.group.Entity.User;
 import com.lian.group.Entity.UserDetail;
@@ -6,19 +6,14 @@ import com.lian.group.Repository.UserDetailRepository;
 import com.lian.group.Repository.UserRepository;
 import com.lian.group.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.text.MessageFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -43,13 +38,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return users;
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) {
-        final Optional<User> optionalUser = userRepository.findByUsername(username);
-
-        return optionalUser.orElseThrow(() -> new UsernameNotFoundException(MessageFormat.format("User with username {0} cannot be found.", username)));
-
-    }
 
     @Override
     public User updatePassword(Integer userId, String password) throws Exception {
@@ -89,16 +77,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         newUser.setUsername(username);
         newUser.setPassword(passwordEncoder.encode(password));
         newUser.setEmail(email);
-
+        userRepository.saveAndFlush(newUser);
         // Create UserDetail
         UserDetail detail = new UserDetail();
         detail.setImage_url(image);
         detail.setRole(role);
         detail.setUserRoleRegisterDate(new Date());
-        newUser.setUserDetail(detail);
-
+        userDetailRepository.save(detail);
+        //newUser.setUserDetail(detail);
         // Save User
-        userRepository.save(newUser);
+        newUser.setUserDetail(detail);
+        userRepository.saveAndFlush(newUser);
         return newUser;
     }
 

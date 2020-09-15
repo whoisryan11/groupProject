@@ -13,6 +13,7 @@ public interface ResourceRepository extends JpaRepository<Resource, Integer> {
 
     // ---Search Part
     Resource findResourceById(Integer id);
+    Resource findResourceByName(String resourceName);
 
     List<Resource> findAll();
     // ---Delete Part
