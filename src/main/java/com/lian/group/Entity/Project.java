@@ -23,6 +23,7 @@ public class Project {
     @OneToMany(
             fetch = FetchType.LAZY,
             mappedBy = "project",
+            orphanRemoval=true,
             cascade= {CascadeType.PERSIST, CascadeType.MERGE,
                     CascadeType.DETACH, CascadeType.REFRESH})
     Set<ProjectResource> resources;

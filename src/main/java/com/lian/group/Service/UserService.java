@@ -1,7 +1,7 @@
 package com.lian.group.Service;
 
 import com.lian.group.Entity.User;
-import org.springframework.stereotype.Service;
+import com.lian.group.Security.CreateUserRequest;
 
 import java.util.List;
 
@@ -18,6 +18,8 @@ public interface UserService  {
 
     // Assign user to the user detail
     User assignDetail(Integer userId, Integer userDetailId) throws Exception;
+
+    User createUser(CreateUserRequest user) throws Exception;
 
     User createUser(String username, String password, String email, String image, String role) throws Exception;
 

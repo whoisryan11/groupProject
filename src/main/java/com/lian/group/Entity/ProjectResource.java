@@ -10,13 +10,11 @@ public class ProjectResource {
     @Column(name="id")
     private Integer id;
 
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-            CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "project_id")
     private Project project;
 
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-            CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "resource_id")
     private Resource resource;
 
@@ -43,4 +41,6 @@ public class ProjectResource {
     public void setResource(Resource resource) {
         this.resource = resource;
     }
+
+
 }

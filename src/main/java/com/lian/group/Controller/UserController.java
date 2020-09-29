@@ -3,6 +3,7 @@ package com.lian.group.Controller;
 import com.lian.group.Entity.User;
 import com.lian.group.Security.AuthenticationRequest;
 import com.lian.group.Security.AuthenticationResponse;
+import com.lian.group.Security.CreateUserRequest;
 import com.lian.group.Security.MyUserDetailsService;
 import com.lian.group.Service.UserService;
 import com.lian.group.util.JwtUtil;
@@ -89,12 +90,8 @@ public class UserController {
     }
 
     @PostMapping("/createUser")
-    public ResponseEntity<?> createUser(@RequestParam String username,
-                             @RequestParam String pwd,
-                             @RequestParam String email,
-                             @RequestParam String img,
-                             @RequestParam String role) throws Exception {
-        User newUser = userService.createUser(username, pwd, email, img, role);
+    public ResponseEntity<?> createUser(@RequestBody CreateUserRequest createUserRequest) throws Exception {
+        User newUser = userService.createUser(createUserRequest);
         return ResponseEntity.ok(newUser);
     }
 

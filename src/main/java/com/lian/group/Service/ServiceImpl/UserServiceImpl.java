@@ -4,6 +4,7 @@ import com.lian.group.Entity.User;
 import com.lian.group.Entity.UserDetail;
 import com.lian.group.Repository.UserDetailRepository;
 import com.lian.group.Repository.UserRepository;
+import com.lian.group.Security.CreateUserRequest;
 import com.lian.group.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -63,6 +64,25 @@ public class UserServiceImpl implements UserService {
         userToUpdate.setUserDetail(userDetail);
         userRepository.save(userToUpdate);
         return userToUpdate;
+    }
+
+    @Override
+    public User createUser(CreateUserRequest user) throws Exception {
+        User newUser = new User();
+        UserDetail detail = new UserDetail();
+
+        newUser.setUsername(user.getUsername());
+        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        newUser.setEmail(user.getEmail());
+        newUser.setName(user.getName());
+        userRepository.saveAndFlush(newUser);
+
+        detail.setUserRoleRegisterDate(new Date());
+        userDetailRepository.save(detail);
+
+        newUser.setUserDetail(detail);
+        userRepository.saveAndFlush(newUser);
+        return newUser;
     }
 
     @Override

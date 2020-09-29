@@ -37,6 +37,11 @@ public class ProjectController {
         return new ResponseEntity<>(projects, HttpStatus.OK);
     }
 
+    @DeleteMapping("/projectDeleteResource")
+    public ResponseEntity<String> projectDeleteResource(@RequestParam Integer project_id, @RequestParam Integer resource_id){
+        return new ResponseEntity<>(projectService.deleteResourceFromProject(project_id, resource_id), HttpStatus.OK);
+    }
+
     @GetMapping("/project/")
     public ResponseEntity<Project> findProjectById (@RequestParam Integer id) throws Exception {
         return new ResponseEntity<>(projectService.findOne(id), HttpStatus.OK);

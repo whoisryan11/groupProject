@@ -4,13 +4,14 @@ import com.lian.group.Entity.Project;
 import com.lian.group.Entity.ProjectResource;
 import com.lian.group.Entity.Resource;
 import com.lian.group.Repository.ProjectRepository;
-import com.lian.group.Repository.ResourceRepository;
 import com.lian.group.Repository.ProjectResourceRepository;
+import com.lian.group.Repository.ResourceRepository;
 import com.lian.group.Service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -75,6 +76,21 @@ public class ProjectServiceImpl implements ProjectService {
         project.setProjectName(projectName);
         projectRepository.save(project);
         return project;
+    }
+
+    @Override
+    public String deleteResourceFromProject(Integer projectId, Integer resourceId) {
+        Project project = projectRepository.findProjectById(projectId);
+        Resource resource = resourceRepository.findResourceById(resourceId);
+        ProjectResource pR = projectResourceRepository.findProjectResourceByProjectAndResource(project, resource);
+        /**
+         * Can find the Project Resource row, but failed to delete */
+        project.getResources().remove(resource);
+        projectRepository.saveAndFlush(project);
+        resource.getProjects().remove(project);
+        resourceRepository.saveAndFlush(resource);
+        projectResourceRepository.delete(pR);
+        return pR.toString();
     }
 
     @Override
