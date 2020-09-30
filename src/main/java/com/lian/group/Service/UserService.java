@@ -4,6 +4,7 @@ import com.lian.group.Entity.User;
 import com.lian.group.Security.CreateUserRequest;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface UserService  {
@@ -31,4 +32,6 @@ public interface UserService  {
 
     //Update role
     User updateRole(Integer userId, String newRole) throws Exception;
+
+    Optional<User> findUserByUsername(String username);
 }

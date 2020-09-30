@@ -115,4 +115,10 @@ public class UserController {
         User user = userService.updateRole(uid, role);
         return ResponseEntity.ok(user);
     }
+
+    @GetMapping("getUserId")
+    public ResponseEntity<?> getUserByUsername(@RequestParam String username) {
+        User user = userService.findUserByUsername(username).get();
+        return ResponseEntity.ok(user.getId());
+    }
 }
