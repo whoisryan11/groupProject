@@ -49,6 +49,7 @@ public class ProjectController {
 
     @GetMapping("/getProject/")
     public ResponseEntity<Project> findProjectByUserId (@RequestParam Integer id) throws Exception {
-        return new ResponseEntity<>(projectService.findProjectByUserId(id), HttpStatus.OK);
+        Iterable<Project> projects = projectService.findProjectByUserId(id);
+        return new ResponseEntity<>(projects, HttpStatus.OK);
     }
 }

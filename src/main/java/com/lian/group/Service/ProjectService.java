@@ -12,6 +12,6 @@ public interface ProjectService {
     String addResource(Integer projectResourceId, Integer projectId, Integer resourceId) throws Exception;
     Project updateProject(Integer projectId, String projectName) throws Exception;
     String deleteResourceFromProject(Integer projectId, Integer resourceId);
-    Project findProjectByUserId(Integer userId) throws Exception;
+    List<Project> findProjectByUserId(Integer userId) throws Exception;
 
 }
