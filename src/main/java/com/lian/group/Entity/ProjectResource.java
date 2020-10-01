@@ -1,5 +1,7 @@
 package com.lian.group.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,11 +12,15 @@ public class ProjectResource {
     @Column(name="id")
     private Integer id;
 
-    @ManyToOne(cascade= CascadeType.ALL)
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "project_id")
     private Project project;
 
-    @ManyToOne(cascade= CascadeType.ALL)
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "resource_id")
     private Resource resource;
 

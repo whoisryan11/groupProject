@@ -1,5 +1,7 @@
 package com.lian.group.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,6 +17,7 @@ public class Resource {
     @Column(name = "resource_name")
     private String name;
 
+    @JsonManagedReference
     @OneToMany(
             fetch = FetchType.LAZY,
             mappedBy = "resource",

@@ -1,6 +1,9 @@
 package com.lian.group.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,15 +18,16 @@ public class Project {
     @Column(name="project_name" )
     private String projectName;
 
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+
+    @ManyToOne(
+            cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "user_id")
     User user;
 
+    @JsonManagedReference
     @OneToMany(
             fetch = FetchType.LAZY,
             mappedBy = "project",
-            orphanRemoval=true,
             cascade= {CascadeType.PERSIST, CascadeType.MERGE,
                     CascadeType.DETACH, CascadeType.REFRESH})
     Set<ProjectResource> resources;
