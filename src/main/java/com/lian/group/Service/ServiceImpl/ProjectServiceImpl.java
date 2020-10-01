@@ -35,6 +35,15 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    public Project findProjectByUserId(Integer userId) throws Exception {
+        Project project = projectRepository.findProjectByUserId(userId);
+        if (project == null) {
+            throw new Exception("No Project Found!!!");
+        }
+        return project;
+    }
+
+    @Override
     public List<Project> findAll() {
         List<Project> projects = projectRepository.findAll();
         return projects;
