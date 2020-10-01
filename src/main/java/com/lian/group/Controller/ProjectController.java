@@ -46,4 +46,9 @@ public class ProjectController {
     public ResponseEntity<Project> findProjectById (@RequestParam Integer id) throws Exception {
         return new ResponseEntity<>(projectService.findOne(id), HttpStatus.OK);
     }
+
+    @GetMapping("/getProject/")
+    public ResponseEntity<Project> findProjectByUserId (@RequestParam Integer id) throws Exception {
+        return new ResponseEntity<>(projectService.findProjectByUserId(id), HttpStatus.OK);
+    }
 }
