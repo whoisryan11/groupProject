@@ -1,7 +1,10 @@
 package com.lian.group.Controller;
 
 import com.lian.group.Entity.Project;
+import com.lian.group.Security.CreateFormulaRequest;
+import com.lian.group.Service.FormulaService;
 import com.lian.group.Service.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ProjectController {
     private final ProjectService projectService;
+
+    @Autowired
+    private FormulaService formulaService;
+
 
     public ProjectController(ProjectService projectService) {
         this.projectService = projectService;
@@ -52,4 +59,12 @@ public class ProjectController {
         Iterable<Project> projects = projectService.findProjectByUserId(user_id);
         return new ResponseEntity<>(projects, HttpStatus.OK);
     }
+
+    @PostMapping("/createFormula")
+    public ResponseEntity<?> createFormula(@RequestParam Integer p_id, @RequestBody CreateFormulaRequest request) {
+        formulaService.createFormula(p_id, request);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 }

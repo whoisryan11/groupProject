@@ -2,8 +2,6 @@ package com.lian.group.Entity;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class FormulaTest {
 
     @Test
@@ -24,17 +22,17 @@ class FormulaTest {
 
     @Test
     void getCostCode() {
-        Integer costCode = 11;
+        String costCode = "11";
         Formula formula = new Formula();
-        formula.setCostCode(11);
+        formula.setCostCode("11");
         assert (formula.getCostCode().equals(costCode));
     }
 
     @Test
     void setCostCode() {
-        Integer costCode = 11;
+        String costCode = "11";
         Formula formula = new Formula();
-        formula.setCostCode(11);
+        formula.setCostCode("11");
         assert (formula.getCostCode().equals(costCode));
     }
 

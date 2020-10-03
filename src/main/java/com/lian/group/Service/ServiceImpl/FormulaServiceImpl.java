@@ -1,7 +1,10 @@
 package com.lian.group.Service.ServiceImpl;
 
 import com.lian.group.Entity.Formula;
+import com.lian.group.Entity.Project;
 import com.lian.group.Repository.FormulaRepository;
+import com.lian.group.Repository.ProjectRepository;
+import com.lian.group.Security.CreateFormulaRequest;
 import com.lian.group.Service.FormulaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +15,9 @@ import java.util.List;
 public class FormulaServiceImpl implements FormulaService {
     @Autowired
     private FormulaRepository formulaRepository;
+
+    @Autowired
+    private ProjectRepository projectRepository;
 
     //--- Research
     @Override
@@ -32,7 +38,7 @@ public class FormulaServiceImpl implements FormulaService {
 
 
     @Override
-    public List<Formula> findByCostCode(Integer costCode) throws Exception {
+    public List<Formula> findByCostCode(String costCode) throws Exception {
         List<Formula> list = formulaRepository.findAllByCostCode(costCode);
 
         if (list == null) {
@@ -74,14 +80,14 @@ public class FormulaServiceImpl implements FormulaService {
 
     //--- Create
     @Override
-    public void addOne(Integer costCode, Integer itemId, boolean editable) {
+    public void addOne(String costCode, Integer itemId, boolean editable) {
         Formula newForm = new Formula(costCode, itemId, editable);
         formulaRepository.saveAndFlush(newForm);
     }
 
     //--- Update
     @Override
-    public void updateCostCode(Integer id, Integer costCode) throws Exception {
+    public void updateCostCode(Integer id, String costCode) throws Exception {
         Formula formula = formulaRepository.findFormulaById(id);
         if (formula == null) {
             throw new Exception("No such a formula with id==>" + id);
@@ -109,6 +115,17 @@ public class FormulaServiceImpl implements FormulaService {
         }
         formula.setEditable(editable);
         formulaRepository.saveAndFlush(formula);
+    }
+
+    @Override
+    public void createFormula(Integer projectId, CreateFormulaRequest request) {
+        Formula formula = new Formula();
+        formula.setCostCode(request.getName());
+        formula.setItemId(request.getId());
+        Project project = projectRepository.findProjectById(projectId);
+        formula.setProject(project);
+        formulaRepository.save(formula);
+
     }
 
 }

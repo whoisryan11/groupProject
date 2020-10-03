@@ -12,7 +12,7 @@ public class Formula {
     private Integer id;
 
     @Column(name = "cost_code")
-    private Integer costCode;
+    private String costCode;
 
     @Column(name = "item_id")
     private Integer itemId;
@@ -35,11 +35,11 @@ public class Formula {
         this.id = id;
     }
 
-    public Integer getCostCode() {
+    public String getCostCode() {
         return costCode;
     }
 
-    public void setCostCode(Integer costCode) {
+    public void setCostCode(String costCode) {
         this.costCode = costCode;
     }
 
@@ -70,7 +70,7 @@ public class Formula {
     public Formula() {
     }
 
-    public Formula(Integer costCode, Integer itemId, boolean editable) {
+    public Formula(String costCode, Integer itemId, boolean editable) {
         this.costCode = costCode;
         this.itemId = itemId;
         this.editable = editable;

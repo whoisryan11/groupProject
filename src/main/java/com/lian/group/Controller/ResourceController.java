@@ -101,7 +101,7 @@ public class ResourceController {
 
     //Duplicate row returns, using findAllBy...()
     @GetMapping("/getFormulaByCostCode")
-    public ResponseEntity<List<Formula>> findFormulaByCostCode(@RequestParam Integer costCode) throws Exception {
+    public ResponseEntity<List<Formula>> findFormulaByCostCode(@RequestParam String costCode) throws Exception {
         List<Formula> formulas = formulaService.findByCostCode(costCode);
         return  ResponseEntity.ok(formulas);
     }
@@ -132,14 +132,14 @@ public class ResourceController {
     }
 
     @PostMapping("/addFormula")
-    public ResponseEntity<?> addFormula(@RequestParam Integer costCode, @RequestParam Integer itemId,@RequestParam boolean editable) {
+    public ResponseEntity<?> addFormula(@RequestParam String costCode, @RequestParam Integer itemId,@RequestParam boolean editable) {
         formulaService.addOne(costCode, itemId, editable);
         return ResponseEntity.ok("Add Formula Successfully");
     }
 
     //---Update
     @PostMapping("/updateCostCode")
-    public ResponseEntity<?> updateFormulaCostCode(@RequestParam Integer id, @RequestParam Integer costCode) throws Exception {
+    public ResponseEntity<?> updateFormulaCostCode(@RequestParam Integer id, @RequestParam String costCode) throws Exception {
         formulaService.updateCostCode(id, costCode);
         return ResponseEntity.ok("Update CostCode successfully");
     }
@@ -155,5 +155,7 @@ public class ResourceController {
         formulaService.updateEditable(id, editable);
         return ResponseEntity.ok("Update Editable successfully");
     }
+
+
 
 }

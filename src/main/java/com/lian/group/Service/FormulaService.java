@@ -1,6 +1,7 @@
 package com.lian.group.Service;
 
 import com.lian.group.Entity.Formula;
+import com.lian.group.Security.CreateFormulaRequest;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface FormulaService {
 
     List<Formula> findAll();
 
-    List<Formula> findByCostCode(Integer costCode) throws Exception;
+    List<Formula> findByCostCode(String costCode) throws Exception;
 
     List<Formula> findByItemId(Integer itemID) throws Exception;
 
@@ -17,11 +18,14 @@ public interface FormulaService {
 
     void deleteOne(Integer id) throws Exception;
 
-    void addOne(Integer costCode, Integer itemID, boolean editable);
+    void addOne(String costCode, Integer itemID, boolean editable);
 
-    void updateCostCode(Integer id, Integer costCode) throws Exception;
+    void updateCostCode(Integer id, String costCode) throws Exception;
 
     void updateItemId(Integer id, Integer itemID) throws Exception;
 
     void updateEditable(Integer id, boolean editable) throws Exception;
+
+    void createFormula(Integer projectId, CreateFormulaRequest request);
+
 }

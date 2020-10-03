@@ -11,7 +11,7 @@ public interface FormulaRepository extends JpaRepository<Formula,Integer> {
     Formula findFormulaById(Integer formulaId);
     List<Formula> findAll();
     void deleteById(Integer integer);
-    List<Formula> findAllByCostCode(Integer costCode);
+    List<Formula> findAllByCostCode(String costCode);
     List<Formula> findAllByItemId(Integer itemId);
     List<Formula>  findAllByEditable(boolean editable);
 }
