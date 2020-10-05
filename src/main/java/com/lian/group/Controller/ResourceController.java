@@ -32,6 +32,7 @@ public class ResourceController {
     @GetMapping("/getResource/{id}")
     public ResponseEntity<?> findResourceByID(@PathVariable Integer id) throws Exception {
         Resource resource = resourceService.findOne(id);
+//        resourceService.alterResource("test","int");
         return ResponseEntity.ok(resource);
     }
 
@@ -83,11 +84,18 @@ public class ResourceController {
     // @PostMapping and @GetMapping both worked here,but need @pathvariable in Get
 //    @GetMapping("/updateResource/{id}&{resourceName}")
     @PutMapping("/updateResource")
-    public ResponseEntity<?> updateResource(@RequestBody Integer id, String resourceName) throws Exception {
+    public ResponseEntity<?> updateResource(@RequestParam Integer id, @RequestParam String resourceName) throws Exception {
         resourceService.updateOne(id, resourceName);
         return ResponseEntity.ok("Resource Updated");
     }
 
+    //changing database
+    @PutMapping("/alterResource")
+    public ResponseEntity<?> alter(){
+//        resourceService.alterResource(columnName,columnType);
+        resourceService.alterResource("test","int");
+        return ResponseEntity.ok("Column Added");
+    }
     /**
      * Formula Controller
      */

@@ -67,4 +67,9 @@ public class ResourceServiceImpl implements ResourceService {
             resourceRepository.saveAndFlush(resource);
         }
     }
+
+    //update database
+    public void alterResource(String columnName,String columnType){
+        resourceRepository.alterResourceAddColumn(columnName,columnType);
+    }
 }
