@@ -76,7 +76,7 @@ public class ResourceController {
     //   @PostMapping failed? Because https:// uses method "get" as default
 
     @PostMapping("/addNewResource")
-    public ResponseEntity<?> addResource(@RequestParam String resourceName) {
+    public ResponseEntity<?> addResource(@RequestBody String resourceName) {
         resourceService.addOne(resourceName);
         return ResponseEntity.ok("Resource Added");
     }
