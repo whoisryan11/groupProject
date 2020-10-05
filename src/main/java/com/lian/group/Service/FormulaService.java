@@ -2,6 +2,7 @@ package com.lian.group.Service;
 
 import com.lian.group.Entity.Formula;
 import com.lian.group.Security.CreateFormulaRequest;
+import com.lian.group.Security.InsertFormulaColumnRequest;
 
 import java.util.List;
 
@@ -28,4 +29,5 @@ public interface FormulaService {
 
     void createFormula(Integer projectId, CreateFormulaRequest request);
 
+    void insertNewColumn(InsertFormulaColumnRequest request);
 }

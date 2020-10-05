@@ -2,6 +2,7 @@ package com.lian.group.Controller;
 
 import com.lian.group.Entity.Project;
 import com.lian.group.Security.CreateFormulaRequest;
+import com.lian.group.Security.InsertFormulaColumnRequest;
 import com.lian.group.Service.FormulaService;
 import com.lian.group.Service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,12 @@ public class ProjectController {
     public ResponseEntity<?> createFormula(@RequestParam Integer p_id, @RequestBody CreateFormulaRequest request) {
         formulaService.createFormula(p_id, request);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/insertField")
+    public ResponseEntity<?> insertField(@RequestBody InsertFormulaColumnRequest request) {
+        formulaService.insertNewColumn(request);
+        return ResponseEntity.ok("New Column inserted in Formula");
     }
 
 

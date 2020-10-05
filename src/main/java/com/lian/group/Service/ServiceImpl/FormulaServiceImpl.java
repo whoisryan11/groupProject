@@ -2,9 +2,11 @@ package com.lian.group.Service.ServiceImpl;
 
 import com.lian.group.Entity.Formula;
 import com.lian.group.Entity.Project;
+import com.lian.group.Repository.DatabaseUpdates;
 import com.lian.group.Repository.FormulaRepository;
 import com.lian.group.Repository.ProjectRepository;
 import com.lian.group.Security.CreateFormulaRequest;
+import com.lian.group.Security.InsertFormulaColumnRequest;
 import com.lian.group.Service.FormulaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ import java.util.List;
 // if forge @Service annotation, u will get compile error said u can't find this Bean
 @Service
 public class FormulaServiceImpl implements FormulaService {
+    @Autowired
+    private DatabaseUpdates databaseUpdates;
+
     @Autowired
     private FormulaRepository formulaRepository;
 
@@ -126,6 +131,11 @@ public class FormulaServiceImpl implements FormulaService {
         formula.setProject(project);
         formulaRepository.save(formula);
 
+    }
+
+    @Override
+    public void insertNewColumn(InsertFormulaColumnRequest request) {
+        this.databaseUpdates.alterMyTableAddMyColumn("formula", request.getField(), "VARCHAR(100)");
     }
 
 }
