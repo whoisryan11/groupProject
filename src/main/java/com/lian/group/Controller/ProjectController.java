@@ -70,7 +70,8 @@ public class ProjectController {
     @PostMapping("/insertField")
     public ResponseEntity<?> insertField(@RequestBody InsertFormulaColumnRequest request) {
         formulaService.insertNewColumn(request);
-        return ResponseEntity.ok("New Column inserted in Formula");
+        Iterable<Project> projects = projectService.findAll();
+        return new ResponseEntity<>(projects, HttpStatus.OK);
     }
 
 
