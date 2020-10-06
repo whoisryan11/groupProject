@@ -11,5 +11,7 @@ public interface ResourceService {
     void deleteOne(Integer id) throws Exception;
     void addOne(String resourceName);
     void updateOne(Integer id,String resourceName)throws Exception;
-    public void alterResource(String columnName,String columnType);
+    public void alterResourceAdd(String columnName,String columnType);
+    public void alterResourceDrop(String columnName);
+    public void truncateResource();
 }

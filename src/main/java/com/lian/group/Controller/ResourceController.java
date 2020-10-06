@@ -4,6 +4,7 @@ import com.lian.group.Entity.Formula;
 import com.lian.group.Entity.Resource;
 import com.lian.group.Service.FormulaService;
 import com.lian.group.Service.ResourceService;
+import com.lian.group.model.AlterTableRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,8 @@ public class ResourceController {
     private final ResourceService resourceService;
     @Autowired
     private final FormulaService formulaService;
+
+
 
     // initialize it
     public ResourceController(ResourceService resourceService, FormulaService formulaService) {
@@ -86,16 +89,39 @@ public class ResourceController {
     @PutMapping("/updateResource")
     public ResponseEntity<?> updateResource(@RequestParam Integer id, @RequestParam String resourceName) throws Exception {
         resourceService.updateOne(id, resourceName);
+
         return ResponseEntity.ok("Resource Updated");
     }
 
-    //changing database
-    @PutMapping("/alterResource")
-    public ResponseEntity<?> alter(){
-//        resourceService.alterResource(columnName,columnType);
-        resourceService.alterResource("test","int");
-        return ResponseEntity.ok("Column Added");
+    /**
+     * changing database
+     * */
+
+    @PostMapping("/alterResourceAdd")
+    public ResponseEntity<?> alterResourceAdd(@RequestBody AlterTableRequest alterTableRequest){
+       String columnName =  alterTableRequest.getColumnName();
+       String columnType = alterTableRequest.getColumnType();
+//        resourceService.alterResourceAdd("test","int");
+        resourceService.alterResourceAdd(columnName,columnType);
+
+        // error not capture, throw error needed
+        return ResponseEntity.ok("Column Added:"+columnName);
     }
+
+    @PostMapping("/alterResourceDrop")
+    public ResponseEntity<?> alterResourceDrop(@RequestBody String columnName){
+        resourceService.alterResourceDrop(columnName);
+//        resourceService.alterResourceDrop("test");
+        return ResponseEntity.ok("Column Dropped"+columnName);
+    }
+
+    @DeleteMapping("/truncateResource")
+    public ResponseEntity<?> truncateResource(){
+        resourceService.truncateResource();
+        return ResponseEntity.ok("Truncate Succeed");
+    }
+
+
     /**
      * Formula Controller
      */

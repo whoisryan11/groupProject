@@ -1,6 +1,7 @@
 package com.lian.group.Service.ServiceImpl;
 
 import com.lian.group.Entity.Resource;
+import com.lian.group.Repository.DatabaseUpdates;
 import com.lian.group.Repository.ResourceRepository;
 import com.lian.group.Service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ import java.util.List;
 public class ResourceServiceImpl implements ResourceService {
     @Autowired
     private ResourceRepository resourceRepository;
+
+    @Autowired
+    private DatabaseUpdates databaseUpdates;
 
     // search by id
     @Override
@@ -69,7 +73,16 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     //update database
-    public void alterResource(String columnName,String columnType){
-        resourceRepository.alterResourceAddColumn(columnName,columnType);
+    public void alterResourceAdd(String columnName,String columnType){
+        //this
+        databaseUpdates.alterResourceAddColumn(columnName,columnType);
+    }
+
+    public void alterResourceDrop(String columnName){
+        databaseUpdates.alterResourceDropColumn(columnName);
+    }
+
+    public void truncateResource(){
+        databaseUpdates.truncateResource();
     }
 }
