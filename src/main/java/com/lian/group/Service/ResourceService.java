@@ -14,4 +14,5 @@ public interface ResourceService {
     public void alterResourceAdd(String columnName,String columnType);
     public void alterResourceDrop(String columnName);
     public void truncateResource();
+    public List getColumns();
 }

@@ -85,4 +85,7 @@ public class ResourceServiceImpl implements ResourceService {
     public void truncateResource(){
         databaseUpdates.truncateResource();
     }
+    public List getColumns(){
+        return databaseUpdates.getColumns();
+    }
 }

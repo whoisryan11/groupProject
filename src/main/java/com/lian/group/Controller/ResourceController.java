@@ -121,6 +121,12 @@ public class ResourceController {
         return ResponseEntity.ok("Truncate Succeed");
     }
 
+    @GetMapping("/getResourceColumns")
+    public ResponseEntity<?> getResourceColumns(){
+        List list =resourceService.getColumns();
+        return ResponseEntity.ok(list);
+    }
+
 
     /**
      * Formula Controller
